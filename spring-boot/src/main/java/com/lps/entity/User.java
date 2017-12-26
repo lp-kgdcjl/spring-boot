@@ -2,7 +2,6 @@ package com.lps.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +17,9 @@ public class User extends BaseEntity {
 	/** 昵称 */
 	@Column(name = "nickname")
 	private String nickname;
+	/** 用户类别 */
+	@Column(name = "userType")
+	private Integer userType;
 	
 	/* get,set方法*/
 	public String getUserName() {
@@ -43,6 +45,16 @@ public class User extends BaseEntity {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
+
+	public Integer getUserType() {
+		return userType;
+	}
+	
+
+	public void setUserType(Integer userType) {
+		this.userType = userType;
+	}
+	
 	
 	
 }
