@@ -9,7 +9,7 @@
 	<packaging>war</packaging>
 
 	<name>spring-boot</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Spring Boot示例</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -70,6 +70,11 @@
 		    <groupId>com.github.pagehelper</groupId>
 		    <artifactId>pagehelper-spring-boot-starter</artifactId>
 		    <version>1.2.1</version>
+		</dependency>
+		<!-- redis支持 -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-data-redis</artifactId>
 		</dependency>
 		<!-- 测试支持 -->
 		<dependency>

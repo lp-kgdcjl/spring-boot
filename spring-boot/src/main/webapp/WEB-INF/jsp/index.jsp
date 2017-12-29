@@ -36,7 +36,7 @@
 				<ul class="main-navigation">
 					<li><a href="#intro">首页</a></li>
 					<li><a href="#styles">简介</a></li>
-					<li class="highlight with-sep"><a href="">登录</a></li>
+					<li class="highlight with-sep"><a href="${ctx}/login/toLogin">登录</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -52,7 +52,7 @@
 					<h5>欢迎使用鹿山学生管理系统</h5>
 					<br />
 					<h1>笃志勤学，知行合一</h1>
-					<a class="button stroke smoothscroll" href="">开始使用</a>
+					<a class="button stroke smoothscroll" href="/login/toLogin">开始使用</a>
 				</div>
 
 			</div>
