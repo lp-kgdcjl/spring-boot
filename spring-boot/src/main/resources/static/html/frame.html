@@ -60,7 +60,7 @@
 								<!-- 标签页 -->
 								<tabs type="card" closable @on-tab-remove="removeTab" @on-click="clickTab" :animated="false" :value="tabs.activeTab">
 									<tab-pane v-for="tab in tabs.tabArray" :key="tab.id" :name="tab.id" v-if="tab.if" :label="tab.label">
-										<iframe frameborder="0" :src="tab.url" :height="frameHeight" width="100%" marginheight="0" scrolling="auto" marginwidth="0"></iframe>
+										<iframe frameborder="0" :src="tab.url" :height="frameHeight" width="95%" marginheight="0" scrolling="auto" marginwidth="0"></iframe>
 									</tab-pane>
 								</tabs>
 							</i-content>
@@ -90,7 +90,7 @@
 						childrn: [{
 							id: '1-1',
 							label: '首页',
-							url:'home.html'
+							url:'home/home.html'
 						}]
 					},
 					{
