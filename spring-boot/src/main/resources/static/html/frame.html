@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>首页</title>
+
+		<link rel="stylesheet" href="../css/iview.css">
+
+		<script src="../js/vue.js"></script>
+		<script src="../js/iview.min.js"></script>
+		<script src="../js/iview-zh-CN.js"></script>
+		<script src="../js/jquery.min.js"></script>
+
+		<style type="text/css">
+			.layout {
+				border: 1px solid #d7dde4;
+				background: #f5f7f9;
+				position: relative;
+				border-radius: 4px;
+				overflow: hidden;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div id="app">
+			<div class="layout">
+				<layout>
+					<i-header>
+						<!-- 页头 -->
+						<i-menu mode="horizontal" theme="dark" active-name="1">
+							<div style="float: left">
+								<img style="height:65px; float: left;" src="../img/logo.svg">
+								<span style="float: left;color: wheat;font-size: 25px;">vue+view实验</span>
+							</div>
+							<div style=" width: 150px; margin: 0 auto; margin-right: 20px;color: wheat;font-size: 16px;">
+								你好，{{activeUser}}
+							</div>
+						</i-menu>
+					</i-header>
+
+					<layout>
+						<!-- 菜单 -->
+						<sider hide-trigger :style="{background: '#fff'}">
+							<i-menu accordion @on-select="selectMenu" :active-name="menus[0].childrn[0].id" width="auto" :open-names="[menus[0].id]">
+								<submenu v-for="menu in menus" :key="menu.id" :name="menu.id">
+									<template slot="title">
+										<icon type="ios-analytics"></icon>
+										{{menu.label}}
+									</template>
+									<menu-item v-for="m in menu.childrn" :key="m.id" :name="m.id">{{m.label}}</menu-item>
+								</submenu>
+							</i-menu>
+						</sider>
+						<!-- 主体 -->
+						<layout :style="{padding: '24px'}">
+							<i-content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
+								<!-- 标签页 -->
+								<tabs type="card" closable @on-tab-remove="removeTab" @on-click="clickTab" :animated="false" :value="tabs.activeTab">
+									<tab-pane v-for="tab in tabs.tabArray" :key="tab.id" :name="tab.id" v-if="tab.if" :label="tab.label">
+										<iframe frameborder="0" :src="tab.url" :height="frameHeight" width="100%" marginheight="0" scrolling="auto" marginwidth="0"></iframe>
+									</tab-pane>
+								</tabs>
+							</i-content>
+
+						</layout>
+
+					</layout>
+				</layout>
+			</div>
+		</div>
+
+	</body>
+
+	<script>
+		var app = new Vue({
+			el: "#app",
+			data: {
+				activeUser:'管理员',
+				frameHeight:0,
+				tabs: {
+					activeTab: "",
+					tabArray: []
+				},
+				menus: [{
+						id: '1',
+						label: '首页',
+						childrn: [{
+							id: '1-1',
+							label: '首页',
+							url:'home.html'
+						}]
+					},
+					{
+						id: '2',
+						label: '管理',
+						childrn: [{
+							id: '2-1',
+							label: '课程管理',
+							url:'http://www.sina.com'
+						}, {
+							id: '2-2',
+							label: '用户课程',
+							url:'https://www.taobao.com/'
+						}]
+					}
+				]
+			},
+			methods: {
+				selectMenu(name) {
+					var tab = this.getTab(name);
+					if(tab == null) {
+						var menu = this.getMenu(name);
+						var menu = $.extend({}, menu, {
+							if: true,
+							text: name
+						});
+						this.tabs.tabArray.push(menu);
+					} else {
+						/*如果标签存在那么显示它*/
+						tab.if = true;
+					}
+					/*触发选中标签*/
+					this.tabs.activeTab = name;
+				},
+				removeTab(name) {
+					var tab = this.getTab(name);
+					tab.if = false;
+				},
+				clickTab(name) {
+
+				},
+				//根据名称来查找对应的标签
+				getTab(name) {
+					for(var i = 0; i < this.tabs.tabArray.length; i++) {
+						if(this.tabs.tabArray[i].id == name) {
+							return this.tabs.tabArray[i];
+						}
+					}
+					return null; //没有找到
+				},
+				//根据名称来查找对应的菜单条目
+				getMenu(name) {
+					for(var fm = 0; fm < this.menus.length; fm++) {
+						for(var sm = 0; sm < this.menus[fm].childrn.length; sm++) {
+							if(this.menus[fm].childrn[sm].id == name) {
+								return this.menus[fm].childrn[sm];
+							}
+						}
+					}
+				},
+			}
+		});
+		
+		app.selectMenu(app.menus[0].childrn[0].id);
+		app.frameHeight = (document.documentElement.scrollHeight || document.body.scrollHeight)-90-90-90;
+	            	
+	</script>
+
+</html>

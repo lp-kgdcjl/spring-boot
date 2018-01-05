@@ -1,14 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ include file="taglib.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" href="${ctx}/css/index/base.css">
-<link rel="stylesheet" href="${ctx}/css/index/main.css">
-<link rel="stylesheet" href="${ctx}/css/index/vendor.css">
+<link rel="stylesheet" href="css/index/base.css">
+<link rel="stylesheet" href="css/index/main.css">
+<link rel="stylesheet" href="css/index/vendor.css">
 <style type="text/css" media="screen">
 #styles {
 	background: white;
@@ -16,11 +13,6 @@
 	padding-bottom: 12rem;
 }
 </style>
-
-<script src="${ctx}/js/index/modernizr.js"></script>
-
-<link rel="icon" type="image/png" href="${ctx}/img/index/favicon.png">
-
 <title>首页</title>
 </head>
 <body>
@@ -36,7 +28,7 @@
 				<ul class="main-navigation">
 					<li><a href="#intro">首页</a></li>
 					<li><a href="#styles">简介</a></li>
-					<li class="highlight with-sep"><a href="${ctx}/login/toLogin">登录</a></li>
+					<li class="highlight with-sep"><a href="html/frame.html">登录</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -52,7 +44,7 @@
 					<h5>欢迎使用鹿山学生管理系统</h5>
 					<br />
 					<h1>笃志勤学，知行合一</h1>
-					<a class="button stroke smoothscroll" href="/login/toLogin">开始使用</a>
+					<a class="button stroke smoothscroll" href="html/frame.html">开始使用</a>
 				</div>
 
 			</div>
@@ -82,7 +74,7 @@
 
 				<p>
 					<img width="120" height="120" class="pull-left"
-						src="${ctx}/img/index/school-badge.jpg">
+						src="/img/index/school-badge.jpg">
 					校徽的象征意义：<br/>
 					1.外观形状：金色边框的盾形象征着庄重、荣耀、高贵与典雅，体现出学校对学生人格塑造的重视。
 					2.中心形象：
@@ -95,18 +87,6 @@
 					1.校徽颜色以冰蓝色为主，象征理智、冷静、沉稳与广阔，强调科技与效率。
 					2.校徽背景散发耀眼的光泽，有强烈的艺术美感和视觉传播力，预示着广西科技大学鹿山学院的璀璨明天。
 				</p>
-
-
-				<!-- 	<p>
-					A <a href="#">link</a>, <abbr
-						title="this really isn't a very good description">abbrebation</abbr>,
-					<strong>strong text</strong>, <em>em text</em>,
-					<del>deleted text</del>
-					, and
-					<mark>this is a mark text.</mark>
-					<code>.code</code>
-				</p> -->
-
 			</div>
 
 			<div class="col-six tab-full">
@@ -161,34 +141,6 @@
 			</div>
 
 		</div>
- 
-		<%-- <div class="row half-bottom">
-
-			<div class="col-six tab-full">
-
-				<h3>Responsive Image</h3>
-
-				<p>
-					<img src="${ctx}/img/index/post-thumb-1.jpg">
-				</p>
-
-			</div>
-
-			<div class="col-six tab-full">
-
-				<h3>Responsive video</h3>
-
-				<div class="fluid-video-wrapper">
-					<!-- <iframe
-					src="http://player.vimeo.com/video/14592941?title=0&amp;byline=0&amp;portrait=0&amp;color=F64B39"
-					width="500" height="281" frameborder="0" webkitallowfullscreen
-					mozallowfullscreen allowfullscreen></iframe> -->
-				</div>
-
-			</div>
-
-		</div> --%>
-
 	</section>
 
 	<!-- 页脚
@@ -232,6 +184,8 @@
 
 
 </body>
-<script src="${ctx}/js/index/plugins.js"></script>
-<script src="${ctx}/js/index/main.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/index/modernizr.js"></script>
+<script src="js/index/plugins.js"></script>
+<script src="js/index/main.js"></script>
 </html>
