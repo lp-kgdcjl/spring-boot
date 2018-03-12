@@ -7,7 +7,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="COURSE")
+@Table(name="course")
 public class Course extends BaseEntity{
 
 	private static final long serialVersionUID = -4882972904261125952L;

@@ -7,10 +7,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name="user")
 public class User extends BaseEntity {
-
 	
 	private static final long serialVersionUID = 5339074590716163206L;
-	
 	
 	/** 用户名 */
 	@Column(name = "userName")
@@ -57,6 +55,12 @@ public class User extends BaseEntity {
 
 	public void setUserType(Integer userType) {
 		this.userType = userType;
+	}
+
+	@Override
+	public String toString() {
+		return "User [userName=" + userName + ", password=" + password + ", nickname=" + nickname + ", userType="
+				+ userType + "]";
 	}
 	
 	
