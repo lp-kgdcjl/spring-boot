@@ -1,9 +1,6 @@
 package com.lps.config;
 
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -114,7 +111,8 @@ public class RedisConfig extends CachingConfigurerSupport {
 
 
   /**
-   * redis连接的基础设置
+   * redis连接的基础设置  并没有启动，此处使用的是配置文件中默认的配置
+   * 如果需要启用在  redisTemplate() 中 setConnectionFactory(redisConnectionFactory())即可
    * @Description:
    * @return
    */

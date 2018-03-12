@@ -8,7 +8,9 @@ import javax.persistence.Table;
 @Table(name="user")
 public class User extends BaseEntity {
 
+	
 	private static final long serialVersionUID = 5339074590716163206L;
+	
 	
 	/** 用户名 */
 	@Column(name = "userName")
