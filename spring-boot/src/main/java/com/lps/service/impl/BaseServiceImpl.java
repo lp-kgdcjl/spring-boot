@@ -10,7 +10,7 @@ import com.lps.mapper.TkMapper;
 public abstract class BaseServiceImpl<T extends BaseEntity,D extends TkMapper<T>> {
 
 	@Autowired
-	private D d;
+	protected D d;
 	
 	public void add(T t) {
 		d.insertSelective(t);

@@ -1,5 +1,7 @@
 package com.lps.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,13 +19,15 @@ public class LoginController extends BaseController {
 	
 	@ResponseBody
 	@RequestMapping(value="/login")
-	public String login(){
+	public List<User> login(){
 		User x = null;
+		List<User> l = null;
 		try {
 			x = userService.selectById(1);
+			l = userService.selectByObj(new User());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return x.toString();
+		return l;
 	}
 }
