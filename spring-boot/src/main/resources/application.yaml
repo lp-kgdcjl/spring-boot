@@ -14,7 +14,7 @@ spring:
   application:
     name: redis #应用名称，作为eureka的服务名
   profiles:
-    active: @profileActive@ #springboot多配置文件
+    active: '@profileActive@' #springboot多配置文件
   mvc:
     view:
       prefix: /WEB-INF/jsp
