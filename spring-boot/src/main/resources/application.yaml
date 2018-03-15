@@ -1,0 +1,58 @@
+#服务器配置
+server:
+  session:
+    timeout: 1800 #用户会话session过期时间，以秒为单位 
+  context-path: / # 配置默认访问路径，默认为/
+  tomcat:
+    uri-encoding: UTF-8 #配置Tomcat编码,默认为UTF-8
+    max-threads: 1000 #配置最大线程数
+  jsp-servle:
+    init-parameters:
+      development: true #打开jsp调试模式，否则默认关闭状态下更改jsp刷新会不生效
+
+spring:
+  application:
+    name: redis #应用名称，作为eureka的服务名
+  profiles:
+    active: @profileActive@ #springboot多配置文件
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp
+      suffix: .html 
+  datasource: #数据库连接配置
+    url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: root
+    password: 123123
+    driver-class-name: com.mysql.jdbc.Driver
+  redis:  #redis配置
+    database: 0 
+    host: 192.168.2.135
+    port: 6379
+    password: 123123
+    pool: #redis连接池配置
+      max-active: 8
+      max-wait: -1
+      max-idle: 8
+      min-idle: 0
+    timeout: 0
+  
+mybatis:  #mybatis配置
+  type-aliases-package: com.lps.entity
+  mapper-locations: classpath:mapper/*.xml
+  
+mapper: #通用mapper配置
+  mappers: com.lps.mapper.TkMapper
+  not-empty: false
+  identity: MYSQL
+  
+pagehelper: #mybatis分页插件配置
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+  
+eureka:
+  client:
+    serviceUrl:
+    #注册中心的地址
+      defaultZone: http://127.0.0.1:8811/eureka/,http://127.0.0.1:8822/eureka/,http://127.0.0.1:8833/eureka/

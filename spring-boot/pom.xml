@@ -9,12 +9,12 @@
 	<packaging>war</packaging>
 
 	<name>spring-boot</name>
-	<description>Spring Boot示例</description>
+	<description>服务消费-提供者</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.8.RELEASE</version>
+		<version>1.5.10.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -22,14 +22,17 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<spring-cloud.version>Edgware.SR2</spring-cloud.version>
 	</properties>
 
 	<dependencies>
+	
 		<!-- web支持 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		
 		<!-- tomcat支持 -->
 		<!-- 由于部署到外部服务器会jar包冲突，将此处的范围设置为provided只在编译和测试时依赖，运行时不依赖  -->
 		<dependency>
@@ -37,17 +40,18 @@
 		    <artifactId>spring-boot-starter-tomcat</artifactId>
 		    <scope>provided</scope>
 		</dependency>
-		<!--jsp页面使用jstl标签-->
-		<dependency>
-		    <groupId>javax.servlet</groupId>
-		    <artifactId>jstl</artifactId>
-		</dependency>
 		<!--用于编译jsp-->
 		<dependency>
 		    <groupId>org.apache.tomcat.embed</groupId>
 		    <artifactId>tomcat-embed-jasper</artifactId>
 		    <scope>provided</scope>
 		</dependency>
+		<!--jsp页面使用jstl标签-->
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>jstl</artifactId>
+		</dependency>
+		
 		<!--连接mybatis-->
 		<dependency>
 		    <groupId>org.mybatis.spring.boot</groupId>
@@ -71,18 +75,38 @@
 		    <artifactId>pagehelper-spring-boot-starter</artifactId>
 		    <version>1.2.1</version>
 		</dependency>
+		
 		<!-- redis支持 -->
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-data-redis</artifactId>
 		</dependency>
+		
 		<!-- 测试支持 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka</artifactId>
+		</dependency>
+		
 	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<build>
 		<plugins>
@@ -92,6 +116,22 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
+	
+	<profiles>
+		<profile>
+			<id>server1</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<profileActive>server1</profileActive>
+			</properties>
+		</profile>
+		<profile>
+			<id>server2</id>
+			<properties>
+				<profileActive>server2</profileActive>
+			</properties>
+		</profile>
+	</profiles>
 </project>

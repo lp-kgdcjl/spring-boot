@@ -19,15 +19,15 @@ public class LoginController extends BaseController {
 	
 	@ResponseBody
 	@RequestMapping(value="/login")
-	public List<User> login(){
+	public String login(){
 		User x = null;
 		List<User> l = null;
 		try {
-			x = userService.selectById(1);
+			x = userService.selectById(2);
 			l = userService.selectByObj(new User());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return l;
+		return x.toString();
 	}
 }
